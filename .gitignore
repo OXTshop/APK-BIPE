@@ -1,0 +1,4 @@
+@echo *.json
+build.log
+jobid.txt
+IA gui - 4/
