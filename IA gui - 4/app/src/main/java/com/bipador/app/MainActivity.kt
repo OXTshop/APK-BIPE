@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         txtLastCode = findViewById(R.id.txtLastCode)
         txtHistory = findViewById(R.id.txtHistory)
         txtCount = findViewById(R.id.txtCount)
-        historyScroll = txtHistory.parent as ScrollView
+        historyScroll = findViewById(R.id.txtHistory.parent as ScrollView)
         findViewById<Button>(R.id.btnExport).setOnClickListener { exportCSV() }
         findViewById<Button>(R.id.btnClear).setOnClickListener {
             codes.clear()
