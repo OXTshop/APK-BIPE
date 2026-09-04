@@ -23,10 +23,18 @@ jobs:
           gradle-version: '8.5'
 
       - name: Build APK
-        run: gradle assembleDebug --no-daemon
+        run: gradle assembleDebug --no-daemon --stacktrace 2>&1 | tee buildlog.txt; test ${PIPESTATUS[0]} -eq 0
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: Bipador-APK
           path: app/build/outputs/apk/debug/*.apk
+
+      - name: Upload log de erro
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log-erro
+          path: buildlog.txt
